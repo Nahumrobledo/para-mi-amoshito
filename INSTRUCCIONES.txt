@@ -1,0 +1,52 @@
+PÁGINA DE AMOR - INSTRUCCIONES
+
+1. ABRIR EL PROYECTO
+   - Instala Visual Studio Code.
+   - Abre Visual Studio Code.
+   - Pulsa Archivo > Abrir carpeta.
+   - Selecciona la carpeta "pagina-amor-completa".
+
+2. AGREGAR LAS FOTOS
+   Entra a la carpeta "fotos" y coloca cuatro fotos con estos nombres exactos:
+
+   yo-pequeno.jpg
+   ella-pequena.jpg
+   nosotros-1.jpg
+   nosotros-2.jpg
+
+   IMPORTANTE:
+   - Deben terminar en .jpg.
+   - Respeta los guiones y los nombres.
+   - Puedes reemplazarlas cuando quieras usando los mismos nombres.
+
+3. CAMBIAR LA CARTA
+   - Abre index.html.
+   - Busca el texto "Una carta para ti".
+   - Debajo encontrarás todos los párrafos.
+   - Cambia únicamente el texto que está entre <p> y </p>.
+
+4. CAMBIAR LA CANCIÓN
+   - Abre index.html.
+   - Busca "youtube.com".
+   - Reemplaza el enlace por el enlace de YouTube o Spotify que quieras.
+
+5. CAMBIAR LA FECHA
+   - Abre script.js.
+   - Busca:
+     new Date(2026, 5, 21, 0, 0, 0)
+   - El número 5 representa junio porque JavaScript cuenta enero como 0.
+
+6. VER LA PÁGINA
+   - Haz doble clic en index.html.
+   - Se abrirá en Chrome.
+   - Cada vez que guardes cambios en Visual Studio Code, recarga Chrome.
+
+7. PUBLICARLA EN GITHUB PAGES
+   - Crea una cuenta en github.com.
+   - Crea un repositorio público.
+   - Sube index.html, style.css, script.js y la carpeta fotos.
+   - Ve a Settings > Pages.
+   - Selecciona Deploy from a branch.
+   - Elige main y /(root).
+   - Guarda.
+   - GitHub te dará el enlace para compartir.

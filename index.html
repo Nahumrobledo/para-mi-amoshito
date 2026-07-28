@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta name="theme-color" content="#2a0b2f" />
+
+  <title>Para mi amoshito ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="hearts-container" aria-hidden="true"></div>
+
+  <!-- PANTALLA DE INICIO -->
+
+  <section class="welcome-screen" id="welcome">
+
+    <div class="welcome-card glass">
+
+      <div class="small-heart">❤️</div>
+
+      <p class="eyebrow">
+        Una sorpresa hecha con amor
+      </p>
+
+      <h1>Para mi amoshito</h1>
+
+      <p class="welcome-text">
+        Preparé este pequeño rincón para recordarte
+        lo importante que eres para mí.
+      </p>
+
+      <button
+        class="main-button"
+        id="open-surprise"
+      >
+        Abrir sorpresa 💌
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTENIDO PRINCIPAL -->
+
+  <main id="main-content" class="hidden">
+
+
+    <!-- PRESENTACIÓN -->
+
+    <section class="hero section">
+
+      <div class="hero-content glass reveal">
+
+        <span class="hero-icon">💖</span>
+
+        <p class="eyebrow">
+          Desde el 21 de junio de 2026
+        </p>
+
+        <h2>
+          Desde que llegaste, todo se siente más bonito
+        </h2>
+
+        <p>
+          Esta página guarda un pedacito de todo lo que siento por ti.
+          Gracias por hacerme feliz, escucharme y acompañarme cada día.
+        </p>
+
+        <a
+          class="secondary-button"
+          href="#letter"
+        >
+          Leer mi carta
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOTOS DE PEQUEÑOS -->
+
+    <section class="section" id="childhood">
+
+      <div class="section-heading reveal">
+
+        <p class="eyebrow">
+          No sabes lo mucho que me gusta ver tus fotos de pequeñita
+        </p>
+
+        <h2>Tu de pequeñita </h2>
+
+        <p>
+          Quién diría que esta niña hemosha seria la que mas amo y me haria feliz ahora mismo.
+          
+
+      </div>
+
+
+      <div class="photo-grid">
+
+
+        <!-- FOTO DE ELLA -->
+
+        <article class="photo-card glass reveal">
+
+          <img
+            src="fotos/ella-pequena.jpg"
+            data-images="
+              fotos/ella-pequena.jpg,
+              fotos/ella-pequena.jpeg,
+              fotos/ella-pequena.jpg.jpeg,
+              fotos/ella-pequena.png
+            "
+            data-image-index="0"
+            onerror="buscarOtraImagen(this)"
+            alt="Foto de mi novia de pequeña"
+          />
+
+          <div class="photo-text">
+
+            <h3>Mi bebe hemosha</h3>
+
+            <p>
+              Desde pequeña ya eras la niña más linda del mundo.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- FOTO TUYA -->
+
+        <article class="photo-card glass reveal">
+
+          <img
+            src="fotos/yo-pequeno.jpg"
+            data-images="
+              fotos/yo-pequeno.jpg,
+              fotos/yo-pequeno.jpeg,
+              fotos/yo-pequeno.jpg.jpeg,
+              fotos/yo-pequeno.png
+            "
+            data-image-index="0"
+            onerror="buscarOtraImagen(this)"
+            alt="Foto tuya de pequeñita"
+          />
+
+          <div class="photo-text">
+
+            <h3>Mi amoshito de pequeñita</h3>
+
+            <p>
+              Nunca imaginé que algún día conocería
+              a alguien tan especial como tú.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+<!-- MI NIÑA HERMOSA -->
+
+<section class="section" id="beautiful-girl">
+
+  <div class="section-heading reveal">
+
+    <p class="eyebrow">
+      La mujer mas hermosa...
+    </p>
+
+    <h2>Así de hermosa eresh</h2>
+
+    <p>
+      Quién iba a pensar que esa niña tan linda crecería para convertirse
+      en la persona más hermosa que he visto.
+    </p>
+
+  </div>
+
+  <div class="gallery-grid">
+
+    <figure class="gallery-item reveal">
+
+      <img
+        src="fotos/ella-1.jpg"
+        onerror="buscarOtraImagen(this)"
+        data-images="
+          fotos/ella-1.jpg,
+          fotos/ella-1.jpeg,
+          fotos/ella-1.jpg.jpeg,
+          fotos/ella-1.png
+        "
+        data-image-index="0"
+      />
+
+      <figcaption>
+        Quién iba a pensar que serías tan hermosa mi vida.
+      </figcaption>
+
+    </figure>
+
+    <figure class="gallery-item reveal">
+
+      <img
+        src="fotos/ella-2.jpg"
+        onerror="buscarOtraImagen(this)"
+        data-images="
+          fotos/ella-2.jpg,
+          fotos/ella-2.jpeg,
+          fotos/ella-2.jpg.jpeg,
+          fotos/ella-2.png
+        "
+        data-image-index="0"
+      />
+
+      <figcaption>
+        No me canso de admirar lo muy hemosha que eres.
+      </figcaption>
+
+    </figure>
+
+    <figure class="gallery-item reveal">
+
+      <img
+        src="fotos/ella-3.jpg"
+        onerror="buscarOtraImagen(this)"
+        data-images="
+          fotos/ella-3.jpg,
+          fotos/ella-3.jpeg,
+          fotos/ella-3.jpg.jpeg,
+          fotos/ella-3.png
+        "
+        data-image-index="0"
+      />
+
+      <figcaption>
+        Cada foto tuya me hace sonreír de una manera increible.
+      </figcaption>
+
+    </figure>
+
+    <figure class="gallery-item reveal">
+
+      <img
+        src="fotos/ella-4.jpg"
+        onerror="buscarOtraImagen(this)"
+        data-images="
+          fotos/ella-4.jpg,
+          fotos/ella-4.jpeg,
+          fotos/ella-4.jpg.jpeg,
+          fotos/ella-4.png
+        "
+        data-image-index="0"
+      />
+
+      <figcaption>
+        Gracias por existir y por hacerme tan feliz mi amoshito.
+      </figcaption>
+
+    </figure>
+
+  </div>
+
+</section>
+    <!-- CARTA -->
+
+    <section class="section" id="letter">
+
+      <article class="letter-card glass reveal">
+
+        <p class="eyebrow">
+          Una carta para ti
+        </p>
+
+        <h2>Mi amor ❤️</h2>
+
+        <div class="letter-text">
+
+          <p>
+            Quería hacerte algo diferente, algo que pudieras
+            abrir cada vez que quisieras recordar cuánto te amo
+            y lo importante que eres para mí.
+          </p>
+
+          <p>
+            Desde que estamos juntos, muchas cosas en mi vida
+            se sienten más bonitas. Me encanta hablar contigo,
+            escucharte, saber cómo estuvo tu día y conocer cada
+            una de las cosas que sueñas hacer. Me haces muy feliz
+            y agradezco muchísimo tenerte en mi vida.
+          </p>
+
+          <p>
+            Quiero que sepas que siempre voy a apoyarte en todo
+            lo que te propongas. Deseo verte crecer, cumplir tus
+            metas y sentirte orgullosa de ti misma. También quiero
+            estar ahí en los días bonitos y en los días difíciles,
+            porque amarte no es solamente estar cuando todo está bien.
+          </p>
+
+          <p>
+            Perdón por las veces en que puedo hacerte enojar o
+            sentir mal. Nunca es mi intención lastimarte. Cada día
+            intento aprender, mejorar y darte el amor que mereces,
+            porque para mí eres una persona demasiado valiosa.
+          </p>
+
+          <p>
+            Espero que esto sea solamente el comienzo de muchos
+            recuerdos juntos. Sueño con el día en que podamos mirar
+            esta página estando abrazados y recordar todo lo que
+            hemos vivido.
+          </p>
+
+          <p class="letter-ending">
+            Gracias por llegar a mi vida, amoshito. Te amo muchísimo
+            y siempre voy a elegirte a ti. ❤️
+          </p>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- FOTOS DE USTEDES -->
+
+    <section class="section" id="gallery">
+
+      <div class="section-heading reveal">
+
+        <p class="eyebrow">
+          Nosotrosh juntitos 
+        </p>
+
+        <h2>
+          Tan hemoshosos nosotros amoshito ❤️
+        </h2>
+
+      </div>
+
+
+      <div class="gallery-grid">
+
+
+        <!-- FOTO 1 -->
+
+        <figure class="gallery-item reveal">
+
+          <img
+            src="fotos/nosotros-1.jpg"
+            data-images="
+              fotos/nosotros-1.jpg,
+              fotos/nosotros-1.jpeg,
+              fotos/nosotros-1.jpg.jpeg,
+              fotos/nosotros-1.png
+            "
+            data-image-index="0"
+            onerror="buscarOtraImagen(this)"
+            alt="Una foto de nosotros"
+          />
+
+          <figcaption>
+            Nosotrosh juntitos . ❤️
+          </figcaption>
+
+        </figure>
+
+
+        <!-- FOTO 2 -->
+
+        <figure class="gallery-item reveal">
+
+          <img
+            src="fotos/nosotros-2.jpg"
+            data-images="
+              fotos/nosotros-2.jpg,
+              fotos/nosotros-2.jpeg,
+              fotos/nosotros-2.jpg.jpeg,
+              fotos/nosotros-2.png
+            "
+            data-image-index="0"
+            onerror="buscarOtraImagen(this)"
+            alt="Otra foto de nosotros"
+          />
+
+          <figcaption>
+             Te amo tanto mi bebe hemosha. ❤️
+          </figcaption>
+
+        </figure>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTADOR -->
+
+    <section class="section" id="counter-section">
+
+      <div class="counter-card glass reveal">
+
+        <p class="eyebrow">
+          Nuestro tiempo juntos
+        </p>
+
+        <h2>
+          Cada segundo contigo cuenta ⏳
+        </h2>
+
+        <div
+          class="counter"
+          aria-label="Contador de tiempo juntos"
+        >
+
+          <div class="time-box">
+            <span id="months">0</span>
+            <small>meses</small>
+          </div>
+
+          <div class="time-box">
+            <span id="days">0</span>
+            <small>días</small>
+          </div>
+
+          <div class="time-box">
+            <span id="hours">0</span>
+            <small>horas</small>
+          </div>
+
+          <div class="time-box">
+            <span id="minutes">0</span>
+            <small>minutos</small>
+          </div>
+
+          <div class="time-box">
+            <span id="seconds">0</span>
+            <small>segundos</small>
+          </div>
+
+        </div>
+
+        <p class="counter-note">
+          Y todavía nos quedan muchísimos momentos por vivir. 💕
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- CANCIÓN -->
+
+    <section class="section" id="music">
+
+      <div class="music-card glass reveal">
+
+        <div class="music-cover">
+          🎶
+        </div>
+
+        <div>
+
+          <p class="eyebrow">
+            Una canción para ti
+          </p>
+
+          <h2>
+            Vivo — Gustavo Cerati
+          </h2>
+
+          <p>
+            Cada vez que escuches esta canción, quiero que recuerdes
+            lo mucho que significas para mí.
+          </p>
+
+          <a
+            class="main-button music-button"
+            href="https://youtu.be/sXR93C_bSVk?si=nGd7ZC8c4w6v02io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Escuchar canción ▶
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MENSAJES SORPRESA -->
+
+    <section class="section" id="surprises">
+
+      <div class="surprise-card glass reveal">
+
+        <p class="eyebrow">
+          Un mensaje para cuando me extrañes
+        </p>
+
+        <h2 id="surprise-message">
+          Presiona el botón para recibir amor ❤️
+        </h2>
+
+        <button
+          class="main-button"
+          id="surprise-button"
+        >
+          Dame un mensajito
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="section final-section">
+
+      <div class="final-card glass reveal">
+
+        <div class="beating-heart">
+          ❤️
+        </div>
+
+        <h2>
+          Gracias por ser mi lugar favorito
+        </h2>
+
+        <p>
+          No importa cuántas veces leas esto: siempre quiero que
+          recuerdes que eres muy amada, muy especial y muy importante
+          para mí.
+        </p>
+
+        <button
+          class="secondary-button"
+          id="love-explosion"
+        >
+          Te amo infinitamente
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    Hecho con todo mi amor para ti. ❤️
+  </footer>
+
+
+  <!-- ESTA FUNCIÓN BUSCA AUTOMÁTICAMENTE
+       LA EXTENSIÓN CORRECTA DE CADA FOTO -->
+
+  <script>
+    function buscarOtraImagen(imagen) {
+
+      const rutas = imagen.dataset.images
+        .split(",")
+        .map(ruta => ruta.trim());
+
+      let indiceActual =
+        Number(imagen.dataset.imageIndex || 0);
+
+      indiceActual++;
+
+      if (indiceActual < rutas.length) {
+
+        imagen.dataset.imageIndex = indiceActual;
+        imagen.src = rutas[indiceActual];
+
+      } else {
+
+        imagen.onerror = null;
+
+        console.error(
+          "No se encontró ninguna imagen para:",
+          rutas
+        );
+
+      }
+    }
+  </script>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
