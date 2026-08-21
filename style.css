@@ -1568,3 +1568,26 @@ footer {
   color: #ffb3c1;
   font-size: 1.25rem;
 }
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Cuadrícula 2x2 */
+  gap: 15px;
+}
+
+@media (max-width: 500px) {
+  .cards-grid {
+    grid-template-columns: 1fr; /* En pantallas pequeñas se pone en 1 columna */
+  }
+} // FUNCIÓN PARA DESPLEGAR CARTAS CON CINTA
+function desplegarCarta(card) {
+  if (card.classList.contains('unfolded')) return;
+
+  card.classList.add('unfolded');
+
+  // Lluvia corta de corazones al abrir
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      lanzarCorazonFlotante(card);
+    }, i * 80);
+  }
+}
