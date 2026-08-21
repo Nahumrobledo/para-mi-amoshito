@@ -1578,4 +1578,147 @@ footer {
   .cards-grid {
     grid-template-columns: 1fr; /* En pantallas pequeñas se pone en 1 columna */
   }
-} 
+} /* ==========================================
+   ESTILOS ELEGANTES (SIN BORDES DE PUNTITOS)
+   ========================================== */
+
+/* 1. Tarjeta de las Cintas / Cartas */
+.reveal-cards-activity {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1rem;
+  background: rgba(30, 10, 40, 0.65);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 182, 193, 0.3); /* Borde sólido elegante */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 105, 180, 0.05);
+  text-align: center;
+}
+
+/* 2. Tarjetas individuales con Cinta */
+.ribbon-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(65, 18, 55, 0.9), rgba(35, 8, 30, 0.95));
+  border: 1px solid rgba(255, 130, 180, 0.35); /* Borde sólido fino */
+  border-radius: 18px;
+  min-height: 125px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ribbon-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 182, 193, 0.7);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.25);
+}
+
+/* 3. Sección Siente mis Latidos */
+.heartbeat-ending {
+  margin-top: 2.5rem;
+  padding: 1.8rem 1rem;
+  background: rgba(30, 10, 40, 0.65);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 182, 193, 0.3); /* Borde sólido fino */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* 4. Si aún usas Raspa y Gana o Ruleta en algún lado */
+.scratch-activity,
+.wheel-activity,
+.coupons-activity {
+  border: 1px solid rgba(255, 182, 193, 0.3) !important; /* Quita el dashed */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.track-message,
+.coupons-activity {
+  border-style: solid !important; /* Fuerza líneas continuas */
+}
+/* ==========================================
+   BORDES ELEGANTES PARA SOBRES Y PEQUEÑOS DETALLES
+   ========================================== */
+
+/* Contenedor principal de pequeños detalles */
+.two-months-activity,
+.envelopes-section,
+.envelopes-grid,
+.envelopes-container {
+  border: 1px solid rgba(255, 182, 193, 0.3) !important; /* Cambia puntitos por línea sólida continua */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Cada sobre individual */
+.envelope,
+.envelope-card,
+.envelope-wrapper {
+  border: 1px solid rgba(255, 130, 180, 0.35) !important; /* Borde continuo y fino */
+  border-style: solid !important;
+}
+
+/* Si las cartas por dentro tenían líneas discontinuas al abrirse */
+.envelope-content,
+.letter-content,
+.envelope-message {
+  border-style: solid !important;
+  border-color: rgba(255, 182, 193, 0.3) !important;
+}
+/* ELIMINAR EL MARCO/CUADRO CONTENEDOR DE LOS SOBRES */
+.envelopes-grid,
+.envelopes-container,
+.envelopes-wrapper,
+.two-months-activity {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 10px 0 !important;
+}
+/* ELIMINAR CUALQUIER MARCO PUNTEADO DE LOS SOBRES */
+.envelopes-grid,
+.envelopes-container,
+.envelopes-wrapper,
+.two-months-activity,
+div[class*="envelopes"],
+div[class*="activity"] {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+/* ELIMINAR LA LÍNEA DIVISORIA DE PUNTITOS */
+hr,
+.two-months-card hr,
+.two-months-text hr,
+.two-months-divider,
+.divider,
+.two-months-ending {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  background: transparent !important;
+  height: 0 !important;
+  margin: 1.5rem 0 !important;
+}
+/* AJUSTE DE ESPACIADO FINAL */
+.two-months-card p,
+.two-months-text p {
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.8rem !important;
+} /* ARREGLAR TEXTO CORTADO Y ESPACIO EN TARJETA 2 MESES */
+.two-months-card,
+.two-months-text {
+  padding-bottom: 2.5rem !important;
+  overflow: visible !important;
+  height: auto !important;
+}
+
+.two-months-card p:last-child,
+.two-months-text p:last-child {
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 10px !important;
+}
