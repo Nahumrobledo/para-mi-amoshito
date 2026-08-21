@@ -1769,3 +1769,108 @@ div[class*="two-months"] {
   padding-bottom: 1rem !important;
   display: block !important;
 }
+/* ==========================================
+   ESTRUCTURA SEGURA DE CIERRE EN CELULARES
+   ========================================== */
+
+/* Bloque independiente para el mensaje final */
+.final-message-standalone {
+  width: 100%;
+  max-width: 500px;
+  margin: 1.8rem auto 1rem auto;
+  padding: 0 1rem;
+  text-align: center;
+  clear: both;
+}
+
+.final-message-standalone p {
+  color: #fff0f3 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.final-message-standalone .love-highlight {
+  color: #ffb3c1 !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+}
+
+/* Forzar flexibilidad total en las tarjetas */
+article, section, .two-months-card, .two-months-text {
+  height: auto !important;
+  max-height: none !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+/* FIX DEFINITIVO Y SEGURO PARA .two-months-ending EN CELULARES */
+
+/* 1. Liberar el contenedor padre para que se estire según el texto */
+.two-months-card,
+.two-months-text,
+.two-months-section,
+article {
+  height: auto !important;
+  max-height: none !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  padding-bottom: 2.5rem !important; /* Espacio extra seguro abajo */
+}
+
+/* 2. Asegurar que el párrafo final tenga margen interno y no choque el borde */
+.two-months-ending {
+  display: block !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1.5rem !important;
+  padding: 0 10px 10px 10px !important;
+  line-height: 1.6 !important;
+  color: #fff0f3 !important;
+  text-align: center !important;
+}
+
+.two-months-ending strong {
+  color: #ffb3c1 !important;
+  font-size: 1.1rem !important;
+  display: inline-block !important;
+  margin-top: 0.5rem !important;
+}
+
+/* 3. Ajuste extra responsivo para pantallas muy estrechas (celulares) */
+@media (max-width: 480px) {
+  .two-months-card,
+  .two-months-text {
+    padding-bottom: 3.5rem !important; /* Más margen abajo en teléfonos */
+  }
+
+  .two-months-ending {
+    font-size: 0.95rem !important;
+  }
+
+  .two-months-ending strong {
+    font-size: 1.05rem !important;
+  }
+}
+/* EXPANDIR LIGERAMENTE LA TARJETA DE LOS 2 MESES */
+
+.two-months-card,
+.two-months-text {
+  /* Le damos un poco más de alto/espacio hacia abajo */
+  padding-bottom: 4rem !important; 
+  margin-bottom: 2rem !important;
+}
+
+/* Espaciado del texto final para que quede centrado en ese espacio extra */
+.two-months-ending {
+  margin-top: 1.8rem !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Ajuste sutil específico para celulares */
+@media (max-width: 480px) {
+  .two-months-card,
+  .two-months-text {
+    padding-bottom: 4.5rem !important;
+  }
+}
