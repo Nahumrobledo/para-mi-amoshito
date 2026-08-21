@@ -1722,3 +1722,29 @@ hr,
   margin-bottom: 1.5rem !important;
   padding-bottom: 10px !important;
 }
+/* FIX RESPONSIVE PARA CELULARES Y MONITOR */
+.two-months-card,
+.two-months-text,
+div[class*="two-months"] {
+  height: auto !important;
+  min-height: fit-content !important;
+  max-height: none !important;
+  padding-bottom: 3rem !important;
+  overflow: visible !important;
+}
+
+/* Espaciado del texto final en pantallas pequeñas */
+@media (max-width: 600px) {
+  .two-months-card,
+  .two-months-text {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .two-months-card p,
+  .two-months-text p {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+}
