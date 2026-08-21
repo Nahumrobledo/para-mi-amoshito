@@ -1748,3 +1748,24 @@ div[class*="two-months"] {
     line-height: 1.5 !important;
   }
 }
+/* FIX DEFINITIVO PARA ALTURA Y TEXTO SALIDO EN CELULARES */
+article,
+section,
+.two-months-card,
+.two-months-text,
+.two-months-section,
+div[class*="two-months"] {
+  height: auto !important;
+  max-height: none !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  padding-bottom: 2.5rem !important;
+}
+
+/* Evitar que el texto final toque o sobrepase el borde inferior */
+.two-months-card p:last-of-type,
+.two-months-text p:last-of-type {
+  margin-bottom: 1rem !important;
+  padding-bottom: 1rem !important;
+  display: block !important;
+}
