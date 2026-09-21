@@ -1,7 +1,3 @@
-/* =========================
-   COLORES GENERALES
-   Puedes cambiarlos aquí.
-========================= */
 :root {
   --bg-dark: #17051f;
   --bg-medium: #351044;
@@ -36,27 +32,12 @@ body {
     linear-gradient(145deg, var(--bg-dark), var(--bg-medium));
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.65) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
-  background-position: 0 0, 40px 60px;
-  background-size: 90px 90px, 130px 130px;
-  opacity: 0.28;
-  z-index: -1;
-}
-
 img {
   display: block;
   width: 100%;
 }
 
-button,
-a {
+button, a {
   font: inherit;
 }
 
@@ -76,6 +57,7 @@ a {
   -webkit-backdrop-filter: blur(16px);
 }
 
+/* PANTALLA INICIO */
 .welcome-screen {
   min-height: 100vh;
   display: grid;
@@ -112,15 +94,9 @@ a {
   text-transform: uppercase;
 }
 
-h1,
-h2,
-h3 {
-  line-height: 1.15;
-}
-
-h1,
-h2 {
+h1, h2 {
   font-family: "Dancing Script", cursive;
+  line-height: 1.15;
 }
 
 h1 {
@@ -133,23 +109,13 @@ h2 {
   font-size: clamp(2.4rem, 8vw, 4rem);
 }
 
-h3 {
-  margin-bottom: 8px;
-  font-size: 1.2rem;
-}
-
-p {
-  line-height: 1.8;
-}
-
 .welcome-text {
   margin: 0 auto 28px;
   max-width: 420px;
   color: var(--text-soft);
 }
 
-.main-button,
-.secondary-button {
+.main-button, .secondary-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -174,8 +140,7 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
-.main-button:hover,
-.secondary-button:hover {
+.main-button:hover, .secondary-button:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 14px 35px rgba(255, 95, 158, 0.38);
 }
@@ -218,12 +183,7 @@ p {
   text-align: center;
 }
 
-.section-heading p:not(.eyebrow) {
-  color: var(--text-soft);
-}
-
-.photo-grid,
-.gallery-grid {
+.photo-grid, .gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
@@ -243,11 +203,6 @@ p {
   padding: 22px;
 }
 
-.photo-text p,
-.gallery-item figcaption {
-  color: var(--text-soft);
-}
-
 .letter-card {
   width: min(100%, 820px);
   margin: 0 auto;
@@ -258,11 +213,6 @@ p {
 .letter-text p {
   margin-bottom: 19px;
   color: var(--text-soft);
-}
-
-.letter-ending {
-  color: var(--pink-light) !important;
-  font-weight: 600;
 }
 
 .gallery-item {
@@ -288,9 +238,7 @@ p {
   text-align: center;
 }
 
-.counter-card,
-.surprise-card,
-.final-card {
+.counter-card, .surprise-card, .final-card {
   padding: 42px 26px;
   border-radius: 30px;
   text-align: center;
@@ -317,12 +265,487 @@ p {
   font-weight: 700;
 }
 
-.time-box small {
-  color: var(--pink-light);
+.music-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 28px;
+  padding: 38px;
+  border-radius: 30px;
 }
 
-.counter-note {
-  color: var(--text-soft);
+.music-cover {
+  display: grid;
+  width: 160px;
+  height: 160px;
+  place-items: center;
+  border-radius: 28px;
+  font-size: 64px;
+  background: linear-gradient(145deg, var(--pink), var(--purple));
+}
+
+#surprise-message {
+  min-height: 95px;
+  display: grid;
+  place-items: center;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 7vw, 3.3rem);
+}
+
+footer {
+  padding: 28px 16px;
+  color: var(--pink-light);
+  text-align: center;
+}
+
+#hearts-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0;
+  animation: rise linear forwards;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes rise {
+  0% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0.8); }
+  15% { opacity: 0.85; }
+  100% { opacity: 0; transform: translateY(-115vh) rotate(360deg) scale(1.3); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.18); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+  60% { transform: scale(1); }
+}
+
+@keyframes floatingCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* TARJETA TRES MESES */
+.anniversary-special {
+  position: relative;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  border-radius: 28px !important;
+  background: linear-gradient(145deg, rgba(50, 15, 55, 0.92), rgba(25, 8, 30, 0.95)) !important;
+  border: 1.5px solid rgba(255, 130, 180, 0.45) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 105, 180, 0.25) !important;
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+
+.anniversary-special h2 {
+  font-family: 'Dancing Script', cursive, sans-serif !important;
+  font-size: 2.8rem !important;
+  color: #ffb3c1;
+  text-shadow: 0 0 12px rgba(255, 117, 143, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.two-months-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #fce4ec;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.two-months-ending {
+  text-align: center !important;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+
+.two-months-hearts {
+  font-size: 1.3rem;
+  letter-spacing: 6px;
+  margin: 1rem 0;
+}
+
+/* ACTIVIDAD SOBRES */
+.love-activity {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+}
+
+.love-activity h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  color: #ffb3c1;
+}
+
+.activity-subtitle {
+  font-size: 0.92rem;
+  color: #f8bbd0;
+  margin-bottom: 1.5rem !important;
+  text-align: center !important;
+}
+
+.envelopes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.envelope-card {
+  background: linear-gradient(135deg, rgba(70, 20, 60, 0.8), rgba(40, 10, 35, 0.9));
+  border: 1px solid rgba(255, 130, 180, 0.4);
+  border-radius: 18px;
+  padding: 18px 14px;
+  cursor: pointer;
+  min-height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.envelope-front span {
+  font-size: 2.2rem;
+  display: block;
+}
+
+.envelope-back {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope-card.opened {
+  background: linear-gradient(135deg, rgba(110, 25, 75, 0.85), rgba(65, 12, 45, 0.95));
+}
+
+/* MINIJUEGO 1: DETECTOR DE AMOR */
+.detector-activity {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1rem;
+  background: rgba(30, 10, 40, 0.65);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  text-align: center;
+}
+
+.detector-activity h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  color: #ffb3c1;
+}
+
+.detector-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.detector-meter {
+  width: 100%;
+  max-width: 320px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  overflow: hidden;
+}
+
+.detector-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #ff4d6d, #ff758f, #ffb3c1);
+  transition: width 0.1s linear;
+}
+
+.detector-val {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ff85a1;
+}
+
+.detector-text {
+  font-size: 0.95rem !important;
+  color: #fff0f3;
+}
+
+/* MINIJUEGO 2: ROMPECABEZAS */
+.puzzle-activity {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1rem;
+  background: rgba(30, 10, 40, 0.65);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  text-align: center;
+}
+
+.puzzle-activity h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  color: #ffb3c1;
+}
+
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.puzzle-piece {
+  background: rgba(65, 18, 55, 0.9);
+  border: 1px solid rgba(255, 130, 180, 0.4);
+  border-radius: 14px;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  text-align: left;
+}
+
+.puzzle-piece.selected {
+  border-color: #ff85a1;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(255, 133, 161, 0.6);
+}
+
+.puzzle-piece.solved {
+  border-color: #4caf50;
+  background: rgba(40, 90, 50, 0.8);
+}
+
+.puzzle-piece p {
+  font-size: 0.85rem !important;
+  color: #fff0f3;
+  margin: 0 !important;
+}
+
+.p-num {
+  font-size: 0.75rem;
+  color: #ff85a1;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.puzzle-status-text {
+  font-size: 0.9rem !important;
+  color: #f8bbd0;
+}
+
+/* MINIJUEGO 3: LA BOLA MÁGICA */
+.magic-ball-activity {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1rem;
+  background: rgba(30, 10, 40, 0.65);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  text-align: center;
+}
+
+.magic-ball-activity h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  color: #ffb3c1;
+}
+
+.ball-container {
+  display: flex;
+  justify-content: center;
+}
+
+.magic-ball {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff758f, #351044);
+  box-shadow: 0 0 25px rgba(255, 95, 158, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 15px;
+  transition: transform 0.3s;
+}
+
+.magic-ball.shaking {
+  animation: ballShake 0.4s infinite alternate;
+}
+
+@keyframes ballShake {
+  0% { transform: scale(0.95) rotate(-3deg); }
+  100% { transform: scale(1.05) rotate(3deg); }
+}
+
+.ball-inner {
+  text-align: center;
+}
+
+.ball-inner #ball-icon {
+  font-size: 1.8rem;
+  display: block;
+}
+
+.ball-inner p {
+  font-size: 0.82rem !important;
+  color: #ffffff;
+  line-height: 1.3 !important;
+}
+
+/* TARJETAS CON CINTA Y BOTÓN DE LATIDOS */
+.reveal-cards-activity, .heartbeat-ending {
+  margin: 2.2rem 0;
+  padding: 1.5rem 1rem;
+  background: rgba(30, 10, 40, 0.65);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  text-align: center;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.ribbon-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(65, 18, 55, 0.9), rgba(35, 8, 30, 0.95));
+  border: 1px solid rgba(255, 130, 180, 0.35);
+  border-radius: 18px;
+  min-height: 125px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ribbon-cover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ff4d6d, #c9184a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.ribbon-card.unfolded .ribbon-cover {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.ribbon-content p {
+  font-size: 0.92rem !important;
+  color: #fff0f3;
+  padding: 12px;
+}
+
+.ending-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: #ffb3c1;
+}
+
+.heart-hold-btn {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 105, 180, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.heart-emoji {
+  font-size: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.heart-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(0deg, #ff4d6d, #ff758f);
+  z-index: 1;
+  transition: height 3s linear;
+}
+
+.heart-hold-btn.holding .heart-fill {
+  height: 100%;
+}
+
+.heartbeat-message.hidden {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .photo-grid, .gallery-grid, .envelopes-grid, .cards-grid, .puzzle-grid {
+    grid-template-columns: 1fr;
+  }
+  .counter {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* ==========================================
+   ESTILOS REPRODUCTOR DE MÚSICA FLOTANTE
+   ========================================== */
+.music-player-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.music-float-btn {
+  background: linear-gradient(135deg, #ff4d6d, #9c6cff);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.music-float-btn:hover {
+  transform: scale(1.05);
+}
+
+.music-float-btn.playing {
+  background: linear-gradient(135deg, #351044, #ff4d6d);
 }
 
 .music-card {
@@ -342,7 +765,6 @@ p {
   border-radius: 28px;
   font-size: 64px;
   background: linear-gradient(145deg, var(--pink), var(--purple));
-  box-shadow: 0 18px 45px rgba(255, 95, 158, 0.3);
 }
 
 .music-card p:not(.eyebrow) {
@@ -354,121 +776,7 @@ p {
   width: fit-content;
 }
 
-.surprise-card {
-  width: min(100%, 760px);
-  margin: 0 auto;
-}
-
-#surprise-message {
-  min-height: 95px;
-  display: grid;
-  place-items: center;
-  font-family: "Dancing Script", cursive;
-  font-size: clamp(2rem, 7vw, 3.3rem);
-}
-
-.final-section {
-  padding-bottom: 110px;
-}
-
-.final-card {
-  width: min(100%, 760px);
-  margin: 0 auto;
-}
-
-.final-card p {
-  margin: 0 auto 26px;
-  max-width: 620px;
-  color: var(--text-soft);
-}
-
-.beating-heart {
-  margin-bottom: 14px;
-  font-size: 80px;
-  animation: heartbeat 1.4s infinite;
-}
-
-footer {
-  padding: 28px 16px;
-  color: var(--pink-light);
-  text-align: center;
-}
-
-/* Corazones flotantes */
-#hearts-container {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 20;
-}
-
-.floating-heart {
-  position: absolute;
-  bottom: -60px;
-  opacity: 0;
-  animation: rise linear forwards;
-  filter: drop-shadow(0 0 8px rgba(255, 95, 158, 0.4));
-}
-
-/* Animaciones al bajar */
-.reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes rise {
-  0% {
-    opacity: 0;
-    transform: translateY(0) rotate(0deg) scale(0.8);
-  }
-  15% {
-    opacity: 0.85;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-115vh) rotate(360deg) scale(1.3);
-  }
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.18); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.12); }
-  60% { transform: scale(1); }
-}
-
-@keyframes floatingCard {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
 @media (max-width: 760px) {
-  .section {
-    width: min(100% - 24px, 1120px);
-    padding: 58px 0;
-  }
-
-  .photo-grid,
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .counter {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .time-box:last-child {
-    grid-column: 1 / -1;
-  }
-
   .music-card {
     grid-template-columns: 1fr;
     padding: 28px 22px;
@@ -483,1394 +791,5 @@ footer {
 
   .music-button {
     width: 100%;
-  }
-
-  .welcome-card,
-  .hero-content,
-  .letter-card,
-  .counter-card,
-  .surprise-card,
-  .final-card {
-    border-radius: 24px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    #beautiful-girl h3{
-    margin-top:15px;
-    margin-bottom:8px;
-    text-align:center;
-    color:#ff7bb0;
-    font-size:1.3rem;
-    font-weight:700;
-}
-
-#beautiful-girl figcaption{
-    text-align:center;
-    line-height:1.6;
-}
-  }
-}
-/* ==========================================
-   DISEÑO MEJORADO Y ELEGANTE DE 2 MESES
-   ========================================== */
-
-#two-months {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 1rem;
-}
-
-.anniversary-special {
-  position: relative;
-  max-width: 680px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 3rem 2.5rem;
-  border-radius: 28px !important; /* Bordes bien redondeados */
-  
-  /* Fondo degradado suave y elegante */
-  background: linear-gradient(145deg, rgba(50, 15, 55, 0.92), rgba(25, 8, 30, 0.95)) !important;
-  
-  /* Borde brillante y sombra flotante */
-  border: 1.5px solid rgba(255, 130, 180, 0.45) !important;
-  box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(255, 105, 180, 0.25),
-    inset 0 0 25px rgba(255, 182, 193, 0.1) !important;
-  
-  text-align: center;
-  backdrop-filter: blur(12px);
-  overflow: hidden;
-}
-
-/* Título con letra cursiva romántica */
-.anniversary-special h2 {
-  font-family: 'Dancing Script', cursive, sans-serif !important;
-  font-size: 2.8rem !important;
-  color: #ffb3c1;
-  text-shadow: 0 0 12px rgba(255, 117, 143, 0.6);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-}
-
-/* Párrafos estilizados */
-.two-months-text p {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #fce4ec;
-  margin-bottom: 1.2rem;
-  text-align: left;
-}
-
-.two-months-ending {
-  text-align: center !important;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px dashed rgba(255, 182, 193, 0.3);
-}
-
-.two-months-ending strong {
-  font-size: 1.2rem;
-  color: #ff85a1;
-  text-shadow: 0 0 8px rgba(255, 133, 161, 0.4);
-}
-
-/* Contenedor de corazones superior e inferior */
-.two-months-hearts {
-  font-size: 1.3rem;
-  letter-spacing: 6px;
-  margin: 1rem 0;
-  opacity: 0.9;
-}
-
-/* Brillos flotantes sutiles */
-.sparkles-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.sparkle {
-  position: absolute;
-  font-size: 1.1rem;
-  animation: floatSparkle 3.5s infinite ease-in-out;
-  opacity: 0;
-}
-
-.sparkle:nth-child(1) { top: 8%; left: 8%; animation-delay: 0s; }
-.sparkle:nth-child(2) { top: 12%; right: 8%; animation-delay: 0.9s; }
-.sparkle:nth-child(3) { bottom: 10%; left: 10%; animation-delay: 1.8s; }
-.sparkle:nth-child(4) { bottom: 12%; right: 10%; animation-delay: 2.5s; }
-
-@keyframes floatSparkle {
-  0% { transform: translateY(0) scale(0.8); opacity: 0; }
-  50% { transform: translateY(-10px) scale(1.2); opacity: 0.8; }
-  100% { transform: translateY(-20px) scale(0.8); opacity: 0; }
-}
-
-/* Ajuste responsivo para celulares */
-@media (max-width: 600px) {
-  .anniversary-special {
-    padding: 2rem 1.2rem;
-    border-radius: 20px !important;
-  }
-  .anniversary-special h2 {
-    font-size: 2.2rem !important;
-  }
-  .two-months-text p {
-    font-size: 0.98rem;
-  }
-}
-/* ==========================================
-   ESTILOS DE LA GALERÍA DE IMÁGENES / JUEGOS
-   ========================================== */
-
-.game-memories {
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px dashed rgba(255, 182, 193, 0.3);
-}
-
-.game-memories h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-  text-align: center;
-}
-
-.game-subtitle {
-  font-size: 0.95rem;
-  color: #f8bbd0;
-  margin-bottom: 1.5rem !important;
-  text-align: center !important;
-}
-
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 15px;
-  margin-bottom: 1.5rem;
-}
-
-.game-card {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 182, 193, 0.3);
-  border-radius: 16px;
-  padding: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-}
-
-.game-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
-}
-
-.game-card img {
-  width: 100%;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-}
-
-.game-card span {
-  display: block;
-  font-size: 0.8rem;
-  color: #ffe0b2;
-  margin-top: 6px;
-  text-align: center;
-}
-/* ==========================================
-   ESTILOS CELEBRACIÓN 2 MESES (ROMÁNTICO)
-   ========================================== */
-
-.celebration-action {
-  margin: 2rem 0;
-  text-align: center;
-}
-
-.party-btn {
-  background: linear-gradient(135deg, #ff4d6d, #ff758f) !important;
-  box-shadow: 0 0 20px rgba(255, 77, 109, 0.4) !important;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 25px;
-  color: white;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.party-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(255, 77, 109, 0.6) !important;
-}
-
-.party-btn:active {
-  transform: scale(0.96);
-}
-
-/* Decoraciones Flotantes */
-.party-decorations {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.party-item {
-  position: absolute;
-  font-size: 1.3rem;
-  animation: floatSparkle 3.5s infinite ease-in-out alternate;
-  opacity: 0.8;
-}
-
-.sparkle-1 { top: 8%; left: 6%; animation-delay: 0s; }
-.sparkle-2 { top: 12%; right: 6%; animation-delay: 1.2s; }
-.sparkle-3 { bottom: 12%; left: 8%; animation-delay: 2.1s; }
-.sparkle-4 { bottom: 10%; right: 8%; animation-delay: 0.6s; }
-
-@keyframes floatSparkle {
-  0% { transform: translateY(0) scale(0.9); opacity: 0.4; }
-  100% { transform: translateY(-15px) scale(1.1); opacity: 0.9; }
-}
-/* ==========================================
-   ESTILOS DE LA ACTIVIDAD DE SOBRES / NOTAS
-   ========================================== */
-
-.love-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-}
-
-.love-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-  text-align: center;
-}
-
-.activity-subtitle {
-  font-size: 0.92rem;
-  color: #f8bbd0;
-  margin-bottom: 1.5rem !important;
-  text-align: center !important;
-}
-
-.envelopes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-.envelope-card {
-  background: linear-gradient(135deg, rgba(70, 20, 60, 0.8), rgba(40, 10, 35, 0.9));
-  border: 1px solid rgba(255, 130, 180, 0.4);
-  border-radius: 16px;
-  padding: 18px 12px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.envelope-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.35);
-  border-color: rgba(255, 182, 193, 0.7);
-}
-
-.envelope-front span {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.envelope-front p {
-  font-size: 0.95rem !important;
-  font-weight: 600;
-  color: #ffcdd2;
-  margin: 0 !important;
-}
-
-.envelope-back {
-  display: none;
-  animation: fadeInNote 0.4s ease-in-out forwards;
-}
-
-.envelope-back p {
-  font-size: 0.92rem !important;
-  line-height: 1.5 !important;
-  color: #fff0f3;
-  margin: 0 !important;
-}
-
-.envelope-card.opened {
-  background: linear-gradient(135deg, rgba(120, 30, 80, 0.85), rgba(70, 15, 50, 0.95));
-  border-color: #ff85a1;
-}
-
-@keyframes fadeInNote {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-/* ==========================================
-   ESTILOS DE LOS 4 SOBRES INTERACTIVOS
-   ========================================== */
-
-.love-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-}
-
-.love-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-  text-align: center;
-}
-
-.activity-subtitle {
-  font-size: 0.92rem;
-  color: #f8bbd0;
-  margin-bottom: 1.5rem !important;
-  text-align: center !important;
-}
-
-.envelopes-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2x2 para que se vea balanceado */
-  gap: 15px;
-}
-
-@media (max-width: 500px) {
-  .envelopes-grid {
-    grid-template-columns: 1fr; /* En pantallas pequeñas se pone en lista vertical */
-  }
-}
-
-.envelope-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(70, 20, 60, 0.8), rgba(40, 10, 35, 0.9));
-  border: 1px solid rgba(255, 130, 180, 0.4);
-  border-radius: 18px;
-  padding: 18px 14px;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  min-height: 125px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  user-select: none;
-}
-
-.envelope-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(255, 105, 180, 0.35);
-  border-color: rgba(255, 182, 193, 0.7);
-}
-
-.envelope-card:active {
-  transform: scale(0.97);
-}
-
-.envelope-front span {
-  font-size: 2.2rem;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.envelope-front p {
-  font-size: 0.95rem !important;
-  font-weight: 600;
-  color: #ffcdd2;
-  margin: 0 !important;
-}
-
-.envelope-back {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.envelope-back p.note-text {
-  font-size: 0.93rem !important;
-  line-height: 1.5 !important;
-  color: #fff0f3;
-  margin: 0 0 8px 0 !important;
-  animation: fadeInText 0.35s ease-in-out forwards;
-}
-
-.tap-more {
-  font-size: 0.75rem;
-  color: #ff85a1;
-  opacity: 0.85;
-}
-
-.envelope-card.opened {
-  background: linear-gradient(135deg, rgba(110, 25, 75, 0.85), rgba(65, 12, 45, 0.95));
-  border-color: #ff85a1;
-}
-
-@keyframes fadeInText {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* ==========================================
-   ESTILOS DE LOS 4 SOBRES INTERACTIVOS
-   ========================================== */
-
-.love-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-}
-
-.love-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-  text-align: center;
-}
-
-.activity-subtitle {
-  font-size: 0.92rem;
-  color: #f8bbd0;
-  margin-bottom: 1.5rem !important;
-  text-align: center !important;
-}
-
-.envelopes-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-@media (max-width: 500px) {
-  .envelopes-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.envelope-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(70, 20, 60, 0.8), rgba(40, 10, 35, 0.9));
-  border: 1px solid rgba(255, 130, 180, 0.4);
-  border-radius: 18px;
-  padding: 18px 14px;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  min-height: 125px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  user-select: none;
-}
-
-.envelope-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(255, 105, 180, 0.35);
-  border-color: rgba(255, 182, 193, 0.7);
-}
-
-.envelope-card:active {
-  transform: scale(0.97);
-}
-
-.envelope-front span {
-  font-size: 2.2rem;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.envelope-front p {
-  font-size: 0.95rem !important;
-  font-weight: 600;
-  color: #ffcdd2;
-  margin: 0 !important;
-}
-
-.envelope-back {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.envelope-back p.note-text {
-  font-size: 0.93rem !important;
-  line-height: 1.5 !important;
-  color: #fff0f3;
-  margin: 0 0 8px 0 !important;
-  animation: fadeInText 0.35s ease-in-out forwards;
-}
-
-.tap-more {
-  font-size: 0.75rem;
-  color: #ff85a1;
-  opacity: 0.85;
-}
-
-.envelope-card.opened {
-  background: linear-gradient(135deg, rgba(110, 25, 75, 0.85), rgba(65, 12, 45, 0.95));
-  border-color: #ff85a1;
-}
-
-@keyframes fadeInText {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* ==========================================
-   ESTILOS DE LA RULETA DE MOMENTOS
-   ========================================== */
-
-.wheel-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(30, 10, 40, 0.65);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-  text-align: center;
-}
-
-.wheel-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-}
-
-.wheel-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.wheel-box {
-  background: rgba(55, 15, 50, 0.8);
-  border: 1px solid rgba(255, 130, 180, 0.3);
-  border-radius: 18px;
-  padding: 20px 15px;
-  width: 100%;
-  max-width: 400px;
-  min-height: 130px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.wheel-box #wheel-icon {
-  font-size: 2.2rem;
-  margin-bottom: 6px;
-}
-
-.wheel-box h4 {
-  font-size: 1.05rem;
-  color: #ffcdd2;
-  margin: 0 0 6px 0;
-}
-
-.wheel-box p {
-  font-size: 0.92rem !important;
-  color: #fff0f3;
-  line-height: 1.5 !important;
-  margin: 0 !important;
-}
-
-.spin-btn-style {
-  background: linear-gradient(135deg, #ff4d6d, #ff758f) !important;
-  box-shadow: 0 0 15px rgba(255, 77, 109, 0.4) !important;
-  padding: 10px 22px !important;
-  font-size: 0.9rem !important;
-  border-radius: 20px !important;
-  cursor: pointer;
-}
-
-.spinning {
-  animation: spinAnimation 0.5s ease-in-out infinite;
-}
-
-@keyframes spinAnimation {
-  0% { transform: scale(0.98) rotate(0deg); }
-  50% { transform: scale(1.02) rotate(2deg); }
-  100% { transform: scale(0.98) rotate(-2deg); }
-}
-/* ==========================================
-   ESTILOS DE TARJETAS PARA RASPAR
-   ========================================== */
-
-.scratch-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(30, 10, 40, 0.65);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-  text-align: center;
-}
-
-.scratch-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-}
-
-.scratch-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-@media (max-width: 500px) {
-  .scratch-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.scratch-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(65, 18, 55, 0.9), rgba(35, 8, 30, 0.95));
-  border: 1px solid rgba(255, 130, 180, 0.4);
-  border-radius: 18px;
-  min-height: 125px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-}
-
-.scratch-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #ff758f, #ff4d6d);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.scratch-cover span {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-}
-
-.scratch-content {
-  padding: 15px 12px;
-  text-align: center;
-}
-
-.scratch-content .s-icon {
-  font-size: 1.8rem;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.scratch-content h4 {
-  font-size: 0.98rem;
-  color: #ffcdd2;
-  margin: 0 0 4px 0;
-}
-
-.scratch-content p {
-  font-size: 0.88rem !important;
-  color: #fff0f3;
-  line-height: 1.4 !important;
-  margin: 0 !important;
-}
-
-/* Animación de raspado */
-.scratch-card.scratched .scratch-cover {
-  opacity: 0;
-  transform: scale(1.1);
-  pointer-events: none;
-}
-/* ==========================================
-   ESTILOS DE TARJETAS CON CINTA / LAZOS
-   ========================================== */
-
-.reveal-cards-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(30, 10, 40, 0.65);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-  text-align: center;
-}
-
-.reveal-cards-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-.ribbon-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(65, 18, 55, 0.9), rgba(35, 8, 30, 0.95));
-  border: 1px solid rgba(255, 130, 180, 0.4);
-  border-radius: 18px;
-  min-height: 125px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-}
-
-.ribbon-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #ff4d6d, #c9184a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  color: white;
-  font-weight: 600;
-  font-size: 0.92rem;
-}
-
-.ribbon-cover span {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-}
-
-.ribbon-content {
-  padding: 18px 14px;
-  text-align: center;
-}
-
-.ribbon-content p {
-  font-size: 0.92rem !important;
-  color: #fff0f3;
-  line-height: 1.45 !important;
-  margin: 0 !important;
-}
-
-/* Animación al desplegar */
-.ribbon-card.unfolded .ribbon-cover {
-  opacity: 0;
-  transform: translateY(-100%);
-  pointer-events: none;
-}/* ==========================================
-   ESTILOS DE TARJETAS CON CINTA / LAZOS
-   ========================================== */
-
-.reveal-cards-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(30, 10, 40, 0.65);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-  text-align: center;
-}
-
-.reveal-cards-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-.ribbon-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(65, 18, 55, 0.9), rgba(35, 8, 30, 0.95));
-  border: 1px solid rgba(255, 130, 180, 0.4);
-  border-radius: 18px;
-  min-height: 125px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-}
-
-.ribbon-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #ff4d6d, #c9184a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  color: white;
-  font-weight: 600;
-  font-size: 0.92rem;
-}
-
-.ribbon-cover span {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-}
-
-.ribbon-content {
-  padding: 18px 14px;
-  text-align: center;
-}
-
-.ribbon-content p {
-  font-size: 0.92rem !important;
-  color: #fff0f3;
-  line-height: 1.45 !important;
-  margin: 0 !important;
-}
-
-/* Animación al desplegar */
-.ribbon-card.unfolded .ribbon-cover {
-  opacity: 0;
-  transform: translateY(-100%);
-  pointer-events: none;
-}
-/* ==========================================
-   ESTILOS DE TARJETAS CON CINTA / LAZOS
-   ========================================== */
-
-.reveal-cards-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(30, 10, 40, 0.65);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 182, 193, 0.35);
-  text-align: center;
-}
-
-.reveal-cards-activity h3 {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2.2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.3rem;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-.ribbon-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(65, 18, 55, 0.9), rgba(35, 8, 30, 0.95));
-  border: 1px solid rgba(255, 130, 180, 0.4);
-  border-radius: 18px;
-  min-height: 125px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-}
-
-.ribbon-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #ff4d6d, #c9184a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  color: white;
-  font-weight: 600;
-  font-size: 0.92rem;
-}
-
-.ribbon-cover span {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-}
-
-.ribbon-content {
-  padding: 18px 14px;
-  text-align: center;
-}
-
-.ribbon-content p {
-  font-size: 0.92rem !important;
-  color: #fff0f3;
-  line-height: 1.45 !important;
-  margin: 0 !important;
-}
-
-/* Animación al desplegar */
-.ribbon-card.unfolded .ribbon-cover {
-  opacity: 0;
-  transform: translateY(-100%);
-  pointer-events: none;
-}
-/* ==========================================
-   CIERRE DE LATIDOS (MANTENER PRESIONADO)
-   ========================================== */
-
-.heartbeat-ending {
-  margin-top: 2.5rem;
-  padding: 1.8rem 1rem;
-  background: rgba(30, 10, 40, 0.6);
-  border-radius: 20px;
-  border: 1px dashed rgba(255, 130, 180, 0.4);
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.ending-title {
-  font-family: 'Dancing Script', cursive, sans-serif;
-  font-size: 2rem;
-  color: #ffb3c1;
-  margin-bottom: 0.5rem;
-}
-
-#hold-instruction {
-  font-size: 0.9rem !important;
-  color: #f8bbd0;
-  margin-bottom: 15px !important;
-}
-
-.heart-hold-btn {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 105, 180, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  overflow: hidden;
-  user-select: none;
-  -webkit-user-select: none;
-  transition: transform 0.2s ease;
-}
-
-.heart-emoji {
-  font-size: 2.5rem;
-  position: relative;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.heart-fill {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(0deg, #ff4d6d, #ff758f);
-  z-index: 1;
-  transition: height 3s linear; /* Tarda 3 segundos en llenarse */
-}
-
-/* Animaciones cuando lo está presionando */
-.heart-hold-btn.holding .heart-fill {
-  height: 100%;
-}
-.heart-hold-btn.holding .heart-emoji {
-  animation: fastPulse 0.35s infinite alternate;
-}
-
-@keyframes fastPulse {
-  from { transform: scale(1); }
-  to { transform: scale(1.3); }
-}
-
-.heartbeat-message {
-  margin-top: 20px;
-  animation: fadeInText 0.8s ease-in-out forwards;
-}
-
-.heartbeat-message.hidden {
-  display: none;
-}
-
-.heartbeat-message p {
-  font-size: 1.1rem !important;
-  color: #fff0f3;
-  line-height: 1.5 !important;
-  margin: 0 !important;
-}
-.heartbeat-message strong {
-  color: #ffb3c1;
-  font-size: 1.25rem;
-}
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Cuadrícula 2x2 */
-  gap: 15px;
-}
-
-@media (max-width: 500px) {
-  .cards-grid {
-    grid-template-columns: 1fr; /* En pantallas pequeñas se pone en 1 columna */
-  }
-} /* ==========================================
-   ESTILOS ELEGANTES (SIN BORDES DE PUNTITOS)
-   ========================================== */
-
-/* 1. Tarjeta de las Cintas / Cartas */
-.reveal-cards-activity {
-  margin: 2.2rem 0;
-  padding: 1.5rem 1rem;
-  background: rgba(30, 10, 40, 0.65);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 182, 193, 0.3); /* Borde sólido elegante */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 105, 180, 0.05);
-  text-align: center;
-}
-
-/* 2. Tarjetas individuales con Cinta */
-.ribbon-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(65, 18, 55, 0.9), rgba(35, 8, 30, 0.95));
-  border: 1px solid rgba(255, 130, 180, 0.35); /* Borde sólido fino */
-  border-radius: 18px;
-  min-height: 125px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.ribbon-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 182, 193, 0.7);
-  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.25);
-}
-
-/* 3. Sección Siente mis Latidos */
-.heartbeat-ending {
-  margin-top: 2.5rem;
-  padding: 1.8rem 1rem;
-  background: rgba(30, 10, 40, 0.65);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 182, 193, 0.3); /* Borde sólido fino */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-/* 4. Si aún usas Raspa y Gana o Ruleta en algún lado */
-.scratch-activity,
-.wheel-activity,
-.coupons-activity {
-  border: 1px solid rgba(255, 182, 193, 0.3) !important; /* Quita el dashed */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.track-message,
-.coupons-activity {
-  border-style: solid !important; /* Fuerza líneas continuas */
-}
-/* ==========================================
-   BORDES ELEGANTES PARA SOBRES Y PEQUEÑOS DETALLES
-   ========================================== */
-
-/* Contenedor principal de pequeños detalles */
-.two-months-activity,
-.envelopes-section,
-.envelopes-grid,
-.envelopes-container {
-  border: 1px solid rgba(255, 182, 193, 0.3) !important; /* Cambia puntitos por línea sólida continua */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* Cada sobre individual */
-.envelope,
-.envelope-card,
-.envelope-wrapper {
-  border: 1px solid rgba(255, 130, 180, 0.35) !important; /* Borde continuo y fino */
-  border-style: solid !important;
-}
-
-/* Si las cartas por dentro tenían líneas discontinuas al abrirse */
-.envelope-content,
-.letter-content,
-.envelope-message {
-  border-style: solid !important;
-  border-color: rgba(255, 182, 193, 0.3) !important;
-}
-/* ELIMINAR EL MARCO/CUADRO CONTENEDOR DE LOS SOBRES */
-.envelopes-grid,
-.envelopes-container,
-.envelopes-wrapper,
-.two-months-activity {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  padding: 10px 0 !important;
-}
-/* ELIMINAR CUALQUIER MARCO PUNTEADO DE LOS SOBRES */
-.envelopes-grid,
-.envelopes-container,
-.envelopes-wrapper,
-.two-months-activity,
-div[class*="envelopes"],
-div[class*="activity"] {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-/* ELIMINAR LA LÍNEA DIVISORIA DE PUNTITOS */
-hr,
-.two-months-card hr,
-.two-months-text hr,
-.two-months-divider,
-.divider,
-.two-months-ending {
-  border: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
-  background: transparent !important;
-  height: 0 !important;
-  margin: 1.5rem 0 !important;
-}
-/* AJUSTE DE ESPACIADO FINAL */
-.two-months-card p,
-.two-months-text p {
-  margin-top: 1.5rem !important;
-  margin-bottom: 0.8rem !important;
-} /* ARREGLAR TEXTO CORTADO Y ESPACIO EN TARJETA 2 MESES */
-.two-months-card,
-.two-months-text {
-  padding-bottom: 2.5rem !important;
-  overflow: visible !important;
-  height: auto !important;
-}
-
-.two-months-card p:last-child,
-.two-months-text p:last-child {
-  margin-bottom: 1.5rem !important;
-  padding-bottom: 10px !important;
-}
-/* FIX RESPONSIVE PARA CELULARES Y MONITOR */
-.two-months-card,
-.two-months-text,
-div[class*="two-months"] {
-  height: auto !important;
-  min-height: fit-content !important;
-  max-height: none !important;
-  padding-bottom: 3rem !important;
-  overflow: visible !important;
-}
-
-/* Espaciado del texto final en pantallas pequeñas */
-@media (max-width: 600px) {
-  .two-months-card,
-  .two-months-text {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    padding-bottom: 3.5rem !important;
-  }
-
-  .two-months-card p,
-  .two-months-text p {
-    font-size: 0.95rem !important;
-    line-height: 1.5 !important;
-  }
-}
-/* FIX DEFINITIVO PARA ALTURA Y TEXTO SALIDO EN CELULARES */
-article,
-section,
-.two-months-card,
-.two-months-text,
-.two-months-section,
-div[class*="two-months"] {
-  height: auto !important;
-  max-height: none !important;
-  min-height: auto !important;
-  overflow: visible !important;
-  padding-bottom: 2.5rem !important;
-}
-
-/* Evitar que el texto final toque o sobrepase el borde inferior */
-.two-months-card p:last-of-type,
-.two-months-text p:last-of-type {
-  margin-bottom: 1rem !important;
-  padding-bottom: 1rem !important;
-  display: block !important;
-}
-/* ==========================================
-   ESTRUCTURA SEGURA DE CIERRE EN CELULARES
-   ========================================== */
-
-/* Bloque independiente para el mensaje final */
-.final-message-standalone {
-  width: 100%;
-  max-width: 500px;
-  margin: 1.8rem auto 1rem auto;
-  padding: 0 1rem;
-  text-align: center;
-  clear: both;
-}
-
-.final-message-standalone p {
-  color: #fff0f3 !important;
-  font-size: 1.05rem !important;
-  line-height: 1.5 !important;
-  margin-bottom: 0.6rem !important;
-}
-
-.final-message-standalone .love-highlight {
-  color: #ffb3c1 !important;
-  font-size: 1.15rem !important;
-  font-weight: 600 !important;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
-}
-
-/* Forzar flexibilidad total en las tarjetas */
-article, section, .two-months-card, .two-months-text {
-  height: auto !important;
-  max-height: none !important;
-  min-height: auto !important;
-  overflow: visible !important;
-}
-/* FIX DEFINITIVO Y SEGURO PARA .two-months-ending EN CELULARES */
-
-/* 1. Liberar el contenedor padre para que se estire según el texto */
-.two-months-card,
-.two-months-text,
-.two-months-section,
-article {
-  height: auto !important;
-  max-height: none !important;
-  min-height: auto !important;
-  overflow: visible !important;
-  padding-bottom: 2.5rem !important; /* Espacio extra seguro abajo */
-}
-
-/* 2. Asegurar que el párrafo final tenga margen interno y no choque el borde */
-.two-months-ending {
-  display: block !important;
-  margin-top: 2rem !important;
-  margin-bottom: 1.5rem !important;
-  padding: 0 10px 10px 10px !important;
-  line-height: 1.6 !important;
-  color: #fff0f3 !important;
-  text-align: center !important;
-}
-
-.two-months-ending strong {
-  color: #ffb3c1 !important;
-  font-size: 1.1rem !important;
-  display: inline-block !important;
-  margin-top: 0.5rem !important;
-}
-
-/* 3. Ajuste extra responsivo para pantallas muy estrechas (celulares) */
-@media (max-width: 480px) {
-  .two-months-card,
-  .two-months-text {
-    padding-bottom: 3.5rem !important; /* Más margen abajo en teléfonos */
-  }
-
-  .two-months-ending {
-    font-size: 0.95rem !important;
-  }
-
-  .two-months-ending strong {
-    font-size: 1.05rem !important;
-  }
-}
-/* EXPANDIR LIGERAMENTE LA TARJETA DE LOS 2 MESES */
-
-.two-months-card,
-.two-months-text {
-  /* Le damos un poco más de alto/espacio hacia abajo */
-  padding-bottom: 4rem !important; 
-  margin-bottom: 2rem !important;
-}
-
-/* Espaciado del texto final para que quede centrado en ese espacio extra */
-.two-months-ending {
-  margin-top: 1.8rem !important;
-  margin-bottom: 1rem !important;
-  line-height: 1.6 !important;
-}
-
-/* Ajuste sutil específico para celulares */
-@media (max-width: 480px) {
-  .two-months-card,
-  .two-months-text {
-    padding-bottom: 4.5rem !important;
   }
 }
