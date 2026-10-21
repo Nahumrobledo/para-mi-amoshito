@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#2a0b2f" />
-  <title>Para mi amoshito ❤️ - Felices 3 Meses</title>
+  <title>Para mi amoshito ❤️ - Felices 4 Meses</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
       <p class="eyebrow">Una sorpresa hecha con amor</p>
       <h1>Para mi amoshito</h1>
       <p class="welcome-text">
-        Preparé este pequeño rincón para recordarte lo importante que eres para mí y celebrar nuestros 3 meses.
+        Preparé este pequeño rincón para recordarte lo importante que eres para mí y celebrar nuestros 4 meses.
       </p>
       <button class="main-button" id="open-surprise">
         Abrir sorpresa ❤️
@@ -34,34 +34,38 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main id="main-content" class="hidden">
 
-    <!-- CARTA PRINCIPAL: TRES MESES -->
+    <!-- CARTA PRINCIPAL: CUATRO MESES -->
     <section class="section" id="three-months">
       <article class="two-months-card glass reveal anniversary-special">
 
         <p class="eyebrow">
-          Tres meses contigo ❤️
+          Cuatro meses contigo ❤️
         </p>
 
         <h2>
-          Felices 3 meses, mi amoshito ❤️
+          Felices 4 meses, mi amoshito ❤️
         </h2>
 
         <div class="two-months-text">
 
           <p>
-            Hoy cumplimos tres meses juntos y quería crear este espacio especial para decirte lo feliz que me siento de compartir mi vida contigo. Estos tres meses a tu lado han sido maravillosos. ❤️
+            Hoy 21 de octubre cumplimos cuatro meses juntos y quería refrescar este espacio especial para decirte lo feliz y afortunado que me siento de compartir mi vida contigo. Estos cuatro meses a tu lado han sido maravillosos. ❤️
           </p>
 
           <p>
-            Gracias por cada día, cada conversación, cada risa y por cada palabra bonita que nos dedicamos. Puede que tres meses suenen a poco para algunos, pero para mí han sido noventa días llenos de momentos mágicos que guardo con mucho amor en mi corazón.
+            Quiero que sepas lo increíblemente orgulloso que me siento de ti, de la persona tan talentosa, valiente y dedicada que eres cada día. Verte luchar por tus metas y dar lo mejor de ti en todo me inspira y me enamora más.
           </p>
 
           <p>
-            Desde aquel 21 de junio has hecho que todo se sienta diferente, lleno de luz y mucha paz. Me fascina tenerte en mi vida, saber cómo estás, escucharte y saber que estas ahi.
+            Gracias por cada día, cada conversación, cada risa y por cada palabra bonita que nos dedicamos a diario. Puede que cuatro meses suenen a poco para algunos, pero para mí han sido 120 días llenos de momentos mágicos que guardo con todo el amor de mi corazón.
           </p>
 
           <p>
-            Gracias por dejarme quererte y por formar parte de mi mundo. Quiero que estos tres meses sean solo el comienzo de muchísimos más recuerdos y momentos felices a tu lado.
+            Desde aquel 21 de junio has hecho que todo se sienta diferente, lleno de luz, tranquilidad y mucha paz. Me fascina tenerte en mi vida, escucharte y saber que caminamos juntos de la mano a pesar de cualquier distancia.
+          </p>
+
+          <p>
+            Gracias por dejarme quererte, por confiar en mí y por formar parte de mi mundo. Eres mi mayor orgullo y quiero que estos cuatro meses sean solo el comienzo de muchísimo más a tu lado.
           </p>
 
           <!-- SOBRES INTERACTIVOS DE DETALLES -->
@@ -118,7 +122,75 @@
             </div>
           </div>
 
-          <!-- MINIJUEGO 1: DETECTOR DE AMOR -->
+          <!-- JUEGO 1: EL MAPA DE NUESTRAS ESTRELLAS -->
+          <div class="stars-activity">
+            <h3>El Mapa de Nuestras Estrellas ❤️</h3>
+            <p class="activity-subtitle">Toca las 4 estrellas en orden (1 al 4) para formar nuestro corazón:</p>
+
+            <div class="sky-container" id="sky-container">
+              <div class="stardust-bg"></div>
+              <svg class="sky-lines" id="sky-svg">
+                <line id="line-1" x1="0" y1="0" x2="0" y2="0" />
+                <line id="line-2" x1="0" y1="0" x2="0" y2="0" />
+                <line id="line-3" x1="0" y1="0" x2="0" y2="0" />
+                <line id="line-4" x1="0" y1="0" x2="0" y2="0" />
+              </svg>
+
+              <!-- Las 4 estrellas ordenadas para trazo continuo -->
+              <div class="star-point" id="star-1" onclick="tocarEstrella(1)">
+                <div class="star-glow"></div>
+                <span class="star-icon">⭐</span>
+                <span class="star-label">1</span>
+              </div>
+              <div class="star-point" id="star-2" onclick="tocarEstrella(2)">
+                <div class="star-glow"></div>
+                <span class="star-icon">⭐</span>
+                <span class="star-label">2</span>
+              </div>
+              <div class="star-point" id="star-3" onclick="tocarEstrella(3)">
+                <div class="star-glow"></div>
+                <span class="star-icon">⭐</span>
+                <span class="star-label">3</span>
+              </div>
+              <div class="star-point" id="star-4" onclick="tocarEstrella(4)">
+                <div class="star-glow"></div>
+                <span class="star-icon">⭐</span>
+                <span class="star-label">4</span>
+              </div>
+            </div>
+
+            <p id="stars-status-text" class="stars-status">Toca la estrella número 1 para comenzar...</p>
+          </div>
+          <!-- JUEGO 5: LA GALLETA DE LA FORTUNA DEL AMOR -->
+<div class="fortune-activity">
+  <h3>Galleta de la Fortuna de Nuestro Amor ❤️</h3>
+  <p class="activity-subtitle">Toca la galleta todas las veces que quieras amoshito:</p>
+
+  <div class="fortune-box">
+    <div class="fortune-cookie" id="fortune-cookie-btn" onclick="abrirGalleta(this)">
+      🥠
+    </div>
+    <div class="fortune-paper" id="fortune-paper" style="display: none; transition: opacity 0.25s ease, transform 0.25s ease;">
+      <p id="fortune-text"></p>
+    </div>
+  </div>
+</div>
+<!-- JUEGO 6: EL JARDÍN DE NUESTRAS RAZONES -->
+<div class="garden-activity">
+  <h3>El Jardín de Nuestras Razones ❤️</h3>
+  <p class="activity-subtitle">Toca la flor para descubrir las  razones por las que me enamoras día a día:</p>
+
+  <div class="garden-container">
+    <div class="flower-btn" onclick="florecerRazon(this)">
+      🌸
+    </div>
+    <div class="garden-paper" id="garden-paper" style="display: none; transition: opacity 0.25s ease, transform 0.25s ease;">
+      <p id="garden-text"></p>
+    </div>
+  </div>
+</div>
+
+          <!-- JUEGO 2: DETECTOR DE AMOR -->
           <div class="detector-activity">
             <h3>Detector de Amor ❤️</h3>
             <p class="activity-subtitle">Presiona el botón para medir cuánto amor hay aquí:</p>
@@ -136,7 +208,7 @@
             </div>
           </div>
 
-          <!-- MINIJUEGO 2: ROMPECABEZAS DE NUESTRA CARTA -->
+          <!-- JUEGO 3: ROMPECABEZAS DE NUESTRA CARTA -->
           <div class="puzzle-activity">
             <h3>Rompecabezas de Nuestra Carta ❤️</h3>
             <p class="activity-subtitle">Toca las piezas para ordenarlas del 1 al 4 y armar la carta:</p>
@@ -144,7 +216,7 @@
             <div id="puzzle-grid" class="puzzle-grid">
               <div class="puzzle-piece" data-order="3" onclick="moverPieza(this)">
                 <span class="p-num">Pieza ?</span>
-                <p>3. Gracias por darme 3 meses llenos de risas y cariñitos. ❤️</p>
+                <p>3. Gracias por darme 4 meses llenos de risas y cariñitos. ❤️</p>
               </div>
               <div class="puzzle-piece" data-order="1" onclick="moverPieza(this)">
                 <span class="p-num">Pieza ?</span>
@@ -152,7 +224,7 @@
               </div>
               <div class="puzzle-piece" data-order="4" onclick="moverPieza(this)">
                 <span class="p-num">Pieza ?</span>
-                <p>4. Te amo con todo mi corazón, ¡felices 3 meses amoshito! ❤️</p>
+                <p>4. Te amo con todo mi corazón, ¡felices 4 meses amoshito! ❤️</p>
               </div>
               <div class="puzzle-piece" data-order="2" onclick="moverPieza(this)">
                 <span class="p-num">Pieza ?</span>
@@ -162,7 +234,7 @@
             <p id="puzzle-status" class="puzzle-status-text">Ordena las piezas tocándolas...</p>
           </div>
 
-          <!-- MINIJUEGO 3: LA BOLA MÁGICA DEL AMOR -->
+          <!-- JUEGO 4: LA BOLA MÁGICA DEL AMOR -->
           <div class="magic-ball-activity">
             <h3>La Bola Mágica de Nuestro Amor ❤️</h3>
             <p class="activity-subtitle">Toca la esfera para consultarle sobre nuestro futuro e historia:</p>
@@ -214,7 +286,7 @@
                   <span>Toca para abrir</span>
                 </div>
                 <div class="ribbon-content">
-                  <p>Gracias por estos 3 meses tan especiales, te amo muchísimo mi amoshito. ❤️</p>
+                  <p>Gracias por estos 4 meses tan especiales, te amo muchísimo mi amoshito. ❤️</p>
                 </div>
               </div>
             </div>
@@ -235,13 +307,13 @@
             <div class="heartbeat-message hidden">
               <p>
                 No importa la distancia, mi corazón siempre late por ti.<br>
-                <strong>¡Te amo muchísimo, felices 3 meses mi vida! ❤️</strong>
+                <strong>¡Te amo muchísimo, felices 4 meses mi vida! ❤️</strong>
               </p>
             </div>
           </div>
 
           <p class="two-months-ending">
-            Gracias por estos tres meses, mi amoshito.
+            Gracias por estos cuatro meses, mi amoshito.
             <br><br>
             <strong>
               Te amo muchísimo y espero que podamos celebrar
@@ -407,9 +479,9 @@
         <div class="music-cover">❤️</div>
         <div>
           <p class="eyebrow">Una canción para ti</p>
-          <h2>Apocalypse - Cigarettes After Sex</h2>
+          <h2>M.</h2>
           <p>Cada vez que escuches esta canción, quiero que recuerdes lo mucho que significas para mí.</p>
-          <a class="main-button music-button" href="https://youtu.be/sElE_BfQ67s?si=8O3hVEQxrkWpvwOX" target="_blank" rel="noopener noreferrer">
+          <a class="main-button music-button" href="https://youtu.be/wsKhe5rTKw8?si=yIQyZx8DbL3gSYzT" target="_blank" rel="noopener noreferrer">
             Escuchar canción
           </a>
         </div>
@@ -441,10 +513,6 @@
     Hecho con todo mi amor para ti. ❤️
   </footer>
 
-  
-
   <script src="script.js"></script>
-</body>
-</html>
 </body>
 </html>

@@ -19,7 +19,7 @@ const messages = [
   "Contigo quiero crear muchísimos recuerdos. ❤️",
   "Tu sonrisa es uno de mis lugares favoritos. ❤️",
   "Aunque estemos lejos, siempre estás conmigo. ❤️",
-  "Estoy muy orgulloso de ti y de todo lo que haces. ❤️",
+  "Estoy super orgulloso de ti y de todo lo que logras. ❤️",
   "Vale por un abrazo enorme y muchos besitos. ❤️",
   "Desde que llegaste, mi corazón se siente en casa. ❤️"
 ];
@@ -192,7 +192,7 @@ const frasesSobres = {
     "Quiero seguir creando recuerdos bonitos contigo día a día. ❤️",
     "Deseo que sigamos apoyándonos en todo lo que nos propongamos. ❤️",
     "Que nunca nos falten las risas ni las ganas de estar juntitos. ❤️",
-    "Celebrar no solo 3 meses, sino muchísimos más a tu lado. ❤️"
+    "Celebrar no solo 4 meses, sino muchísimos más a tu lado. ❤️"
   ]
 };
 
@@ -239,7 +239,73 @@ function lanzarCorazonFlotante(card) {
 }
 
 // ==========================================
-// MINIJUEGO 1: DETECTOR DE AMOR
+// JUEGO 1: EL MAPA DE NUESTRAS ESTRELLAS
+// ==========================================
+let siguienteEstrella = 1;
+const posicionesEstrellas = [];
+
+function tocarEstrella(num) {
+  if (num !== siguienteEstrella) return;
+
+  const starElem = document.getElementById(`star-${num}`);
+  if (!starElem) return;
+  starElem.classList.add("active");
+
+  const rect = starElem.getBoundingClientRect();
+  const skyElem = document.getElementById("sky-container");
+  if (!skyElem) return;
+  const skyRect = skyElem.getBoundingClientRect();
+
+  posicionesEstrellas.push({
+    x: rect.left - skyRect.left + rect.width / 2,
+    y: rect.top - skyRect.top + rect.height / 2
+  });
+
+  if (posicionesEstrellas.length > 1) {
+    const pPrev = posicionesEstrellas[posicionesEstrellas.length - 2];
+    const pCurr = posicionesEstrellas[posicionesEstrellas.length - 1];
+    const lineElem = document.getElementById(`line-${posicionesEstrellas.length - 1}`);
+
+    if (lineElem) {
+      lineElem.setAttribute("x1", pPrev.x);
+      lineElem.setAttribute("y1", pPrev.y);
+      lineElem.setAttribute("x2", pCurr.x);
+      lineElem.setAttribute("y2", pCurr.y);
+      lineElem.classList.add("drawn");
+    }
+  }
+
+  siguienteEstrella++;
+  const statusText = document.getElementById("stars-status-text");
+
+  if (siguienteEstrella <= 4) {
+    if (statusText) statusText.innerText = `¡Excelente! Ahora toca la estrella número ${siguienteEstrella}...`;
+  } else {
+    const pLast = posicionesEstrellas[3];
+    const pFirst = posicionesEstrellas[0];
+    const lineClose = document.getElementById("line-4");
+
+    if (lineClose) {
+      lineClose.setAttribute("x1", pLast.x);
+      lineClose.setAttribute("y1", pLast.y);
+      lineClose.setAttribute("x2", pFirst.x);
+      lineClose.setAttribute("y2", pFirst.y);
+      lineClose.classList.add("drawn");
+    }
+
+    if (statusText) {
+      statusText.innerHTML = "✨ No importa la distancia, bajo el mismo cielo nuestro amor brilla sin parar y me siento el hombre más orgulloso de tenerte a mi lado. ❤️";
+      statusText.style.color = "#ff85a1";
+    }
+    
+    if (typeof createHeartBurst === "function") {
+      createHeartBurst(30);
+    }
+  }
+}
+
+// ==========================================
+// JUEGO 2: DETECTOR DE AMOR
 // ==========================================
 let detectorEscaneando = false;
 
@@ -251,6 +317,8 @@ function probarDetector() {
   const percentText = document.getElementById("detector-percent");
   const msg = document.getElementById("detector-message");
   const btn = document.getElementById("scan-love-btn");
+
+  if (!bar || !percentText || !msg || !btn) return;
 
   btn.disabled = true;
   msg.innerText = "Escaneando nivel de amor...";
@@ -280,7 +348,7 @@ function probarDetector() {
 }
 
 // ==========================================
-// MINIJUEGO 2: ROMPECABEZAS DE LA CARTA
+// JUEGO 3: ROMPECABEZAS DE LA CARTA
 // ==========================================
 let seleccionPieza = null;
 
@@ -319,22 +387,26 @@ function verificarPuzzle() {
   });
 
   const status = document.getElementById("puzzle-status");
+  if (!status) return;
+
   if (correcto) {
     status.innerText = "¡Perfecto! Carta armada con éxito. ❤️";
     status.style.color = "#ff85a1";
     piezas.forEach(p => p.classList.add("solved"));
-    createHeartBurst(20);
+    if (typeof createHeartBurst === "function") {
+      createHeartBurst(20);
+    }
   } else {
     status.innerText = "Sigue moviendo las piezas para armar la historia...";
   }
 }
 
 // ==========================================
-// MINIJUEGO 3: LA BOLA MÁGICA
+// JUEGO 4: LA BOLA MÁGICA
 // ==========================================
 const respuestasBola = [
   " Eres el amor de mi vida. ❤️",
-  "El destino dice que estos 3 meses son solo el inicio. ❤️",
+  "El destino dice que estos 4 meses son solo el inicio. ❤️",
   " En cada universo volvería a elegirte a ti. ❤️",
   "Las estrellas predicen miles de momentos juntos más. ❤️",
   " Cada mensaje tuyo le saca una sonrisa enorme. ❤️"
@@ -343,6 +415,8 @@ const respuestasBola = [
 function consultarBolaMagica() {
   const text = document.getElementById("ball-response");
   const ball = document.querySelector(".magic-ball");
+
+  if (!text || !ball) return;
 
   ball.classList.add("shaking");
   text.innerText = "Consultando a las estrellas...";
@@ -378,8 +452,10 @@ function startHeartbeat(btn) {
     btn.style.border = "none";
     btn.style.background = "linear-gradient(135deg, #ff4d6d, #ff758f)";
     
-    document.getElementById('hold-instruction').style.display = 'none';
-    document.querySelector('.heartbeat-message').classList.remove('hidden');
+    const instr = document.getElementById('hold-instruction');
+    if (instr) instr.style.display = 'none';
+    const msg = document.querySelector('.heartbeat-message');
+    if (msg) msg.classList.remove('hidden');
 
     for (let i = 0; i < 25; i++) {
       setTimeout(() => lanzarCorazonFlotante(btn), i * 60);
@@ -392,4 +468,101 @@ function stopHeartbeat(btn) {
   btn.classList.remove('holding');
   clearTimeout(holdTimer);
   document.oncontextmenu = null;
+}
+// ==========================================
+// JUEGO 5: LA GALLETA DE LA FORTUNA
+// ==========================================
+const fortunasAmor = [
+  "✨ Tu fortuna: Tienes al novio más orgulloso y enamorado del mundo. ❤️",
+  "✨ Tu fortuna: Un futuro lleno de risas, buenos momentos y mucho amor. ❤️",
+  "✨ Tu fortuna: Promesa de escucharte y apoyarte siempre en todos tus sueños. ❤️",
+  "✨ Tu fortuna: 120 días juntos son solo el 1% de todo lo que vamos a vivir. ❤️"
+];
+
+let ultimaFortunaIndex = -1;
+
+function abrirGalleta(elem) {
+  const paper = document.getElementById("fortune-paper");
+  const text = document.getElementById("fortune-text");
+
+  // Animación de rebote de la galleta al tocarla
+  elem.style.transform = "scale(1.2) rotate(12deg)";
+  setTimeout(() => {
+    elem.style.transform = "scale(1) rotate(0deg)";
+  }, 200);
+
+  // Elegir una fortuna diferente a la anterior
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * fortunasAmor.length);
+  } while (newIndex === ultimaFortunaIndex && fortunasAmor.length > 1);
+  
+  ultimaFortunaIndex = newIndex;
+
+  if (paper && text) {
+    // Animación de cambio de texto suave
+    paper.style.opacity = "0";
+    paper.style.transform = "translateY(5px)";
+
+    setTimeout(() => {
+      text.innerText = fortunasAmor[newIndex];
+      paper.style.display = "block";
+      paper.style.opacity = "1";
+      paper.style.transform = "translateY(0)";
+    }, 150);
+  }
+
+  if (typeof createHeartBurst === "function") {
+    createHeartBurst(10);
+  }
+}
+// ==========================================
+// JUEGO 6: EL JARDÍN DE NUESTRAS RAZONES
+// ==========================================
+const razonesAmor = [
+  "🌸  Me fascina lo dedicada, inteligente y enfocada que eres siempre. ❤️",
+  "🌸  Porque tu sonrisa me cambia el día por completo en un segundo. ❤️",
+  "🌸  Me hace sentir super orgulloso ver cómo luchas por todo lo que quieres. ❤️",
+  "🌸  La paz y tranquilidad tan hermosa que me das cuando hablamos. ❤️",
+  "🌸  Simplemente porque eres la persona más especial y linda de mi mundo. ❤️",
+  "🌸  Me encanta la complicidad tan bonita que tenemos en todo. ❤️",
+  "🌸  La forma en que me escuchas y me apoyas en cada momento. ❤️",
+  "🌸  Amo nuestras conversaciones y lo rápido que se me pasa el tiempo contigo. ❤️",
+  "🌸  Porque haces que incluso los días normales se sientan mágicos. ❤️",
+  "🌸  Porque cada día a tu lado me convence más de que te volvería a elegir siempre. ❤️"
+];
+
+let ultimaRazonIndex = -1;
+
+function florecerRazon(elem) {
+  const paper = document.getElementById("garden-paper");
+  const text = document.getElementById("garden-text");
+
+  elem.style.transform = "scale(1.3) rotate(20deg)";
+  setTimeout(() => {
+    elem.style.transform = "scale(1) rotate(0deg)";
+  }, 220);
+
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * razonesAmor.length);
+  } while (newIndex === ultimaRazonIndex && razonesAmor.length > 1);
+
+  ultimaRazonIndex = newIndex;
+
+  if (paper && text) {
+    paper.style.opacity = "0";
+    paper.style.transform = "translateY(5px)";
+
+    setTimeout(() => {
+      text.innerText = razonesAmor[newIndex];
+      paper.style.display = "block";
+      paper.style.opacity = "1";
+      paper.style.transform = "translateY(0)";
+    }, 150);
+  }
+
+  if (typeof createHeartBurst === "function") {
+    createHeartBurst(12);
+  }
 }
