@@ -26,18 +26,35 @@ const messages = [
 
 let lastMessageIndex = -1;
 
+// ==========================================
+// APERTURA DE LA SORPRESA
+// ==========================================
 if (openButton) {
   openButton.addEventListener("click", function () {
-    welcome.classList.add("fade-out");
-    createHeartBurst(28);
+    if (welcome) {
+      welcome.classList.add("fade-out");
+    }
+    
+    if (typeof createHeartBurst === "function") {
+      createHeartBurst(28);
+    }
 
     setTimeout(function () {
-      welcome.style.display = "none";
-      mainContent.classList.remove("hidden");
-      document.body.style.overflowY = "auto";
-      startRevealAnimations();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 700);
+      if (welcome) {
+        welcome.style.display = "none";
+      }
+
+      if (mainContent) {
+        mainContent.classList.remove("hidden");
+        mainContent.style.display = "block";
+        mainContent.style.opacity = "1";
+      }
+
+      // Reinicia el scroll a la parte superior exacta
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }, 450);
   });
 }
 
@@ -130,25 +147,6 @@ function createHeartBurst(amount) {
       createFloatingHeart("burst-heart");
     }, i * 45);
   }
-}
-
-function startRevealAnimations() {
-  const revealElements = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.14 }
-  );
-
-  revealElements.forEach(function (element) {
-    observer.observe(element);
-  });
 }
 
 function buscarOtraImagen(imagen) {
@@ -429,9 +427,6 @@ function consultarBolaMagica() {
   }, 800);
 }
 
-// ==========================================
-// FUNCIONES ADICIONALES
-// ==========================================
 function desplegarCarta(card) {
   if (card.classList.contains('unfolded')) return;
   card.classList.add('unfolded');
@@ -469,6 +464,7 @@ function stopHeartbeat(btn) {
   clearTimeout(holdTimer);
   document.oncontextmenu = null;
 }
+
 // ==========================================
 // JUEGO 5: LA GALLETA DE LA FORTUNA
 // ==========================================
@@ -485,13 +481,11 @@ function abrirGalleta(elem) {
   const paper = document.getElementById("fortune-paper");
   const text = document.getElementById("fortune-text");
 
-  // Animación de rebote de la galleta al tocarla
   elem.style.transform = "scale(1.2) rotate(12deg)";
   setTimeout(() => {
     elem.style.transform = "scale(1) rotate(0deg)";
   }, 200);
 
-  // Elegir una fortuna diferente a la anterior
   let newIndex;
   do {
     newIndex = Math.floor(Math.random() * fortunasAmor.length);
@@ -500,7 +494,6 @@ function abrirGalleta(elem) {
   ultimaFortunaIndex = newIndex;
 
   if (paper && text) {
-    // Animación de cambio de texto suave
     paper.style.opacity = "0";
     paper.style.transform = "translateY(5px)";
 
@@ -516,20 +509,21 @@ function abrirGalleta(elem) {
     createHeartBurst(10);
   }
 }
+
 // ==========================================
-// JUEGO 6: EL JARDÍN DE NUESTRAS RAZONES
+// JUEGO 6: EL JARDÍN DE NUESTRAS RAZONES (10 RAZONES)
 // ==========================================
 const razonesAmor = [
-  "🌸  Me fascina lo dedicada, inteligente y enfocada que eres siempre. ❤️",
-  "🌸  Porque tu sonrisa me cambia el día por completo en un segundo. ❤️",
-  "🌸  Me hace sentir super orgulloso ver cómo luchas por todo lo que quieres. ❤️",
-  "🌸  La paz y tranquilidad tan hermosa que me das cuando hablamos. ❤️",
-  "🌸  Simplemente porque eres la persona más especial y linda de mi mundo. ❤️",
-  "🌸  Me encanta la complicidad tan bonita que tenemos en todo. ❤️",
-  "🌸  La forma en que me escuchas y me apoyas en cada momento. ❤️",
-  "🌸  Amo nuestras conversaciones y lo rápido que se me pasa el tiempo contigo. ❤️",
-  "🌸  Porque haces que incluso los días normales se sientan mágicos. ❤️",
-  "🌸  Porque cada día a tu lado me convence más de que te volvería a elegir siempre. ❤️"
+  "🌸 Me fascina lo dedicada, inteligente y enfocada que eres siempre. ❤️",
+  "🌸 Porque tu sonrisa me cambia el día por completo en un segundo. ❤️",
+  "🌸 Me hace sentir super orgulloso ver cómo luchas por todo lo que quieres. ❤️",
+  "🌸 La paz y tranquilidad tan hermosa que me das cuando hablamos. ❤️",
+  "🌸 Simplemente porque eres la persona más especial y linda de mi mundo. ❤️",
+  "🌸 Me encanta la complicidad tan bonita que tenemos en todo. ❤️",
+  "🌸 La forma en que me escuchas y me apoyas en cada momento. ❤️",
+  "🌸 Amo nuestras conversaciones y lo rápido que se me pasa el tiempo contigo. ❤️",
+  "🌸 Porque haces que incluso los días normales se sientan mágicos. ❤️",
+  "🌸 Porque cada día a tu lado me convence más de que te volvería a elegir siempre. ❤️"
 ];
 
 let ultimaRazonIndex = -1;
